@@ -45,7 +45,6 @@ class STN3d(nn.Module):
         x = x.view(-1, 3, 3)
         return x
 
-
 class STNkd(nn.Module):
     def __init__(self, k=64):
         super(STNkd, self).__init__()
@@ -105,6 +104,7 @@ class PointNetfeat(nn.Module):
         x = x.transpose(2, 1)
         x = torch.bmm(x, trans)
         x = x.transpose(2, 1)
+        # First Layer passed
         x = F.relu(self.bn1(self.conv1(x)))
 
         if self.feature_transform:
