@@ -1,3 +1,7 @@
+# Pointnet.pytorch forked for FACEDB & Semi-Supervised learning
+It Needs FaceDB or other DBs
+
+
 # PointNet.pytorch
 This repo is implementation for PointNet(https://arxiv.org/abs/1612.00593) in pytorch. The model is in `pointnet/model.py`.
 
@@ -58,9 +62,6 @@ Segmentation on  [A subset of shapenet](http://web.stanford.edu/~ericyi/project_
 | this implementation(w/ feature transform) |  |  |  |  | 87.6 |  | | | | | | | | | |81.0|
 
 Note that this implementation trains each class separately, so classes with fewer data will have slightly lower performance than reference implementation.
-
-Sample segmentation result:
-![seg](https://raw.githubusercontent.com/fxia22/pointnet.pytorch/master/misc/show3d.png?token=AE638Oy51TL2HDCaeCF273X_-Bsy6-E2ks5Y_BUzwA%3D%3D)
 
 # Links
 
