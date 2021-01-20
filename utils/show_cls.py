@@ -16,7 +16,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--model', type=str, default = '',  help='model path')
 parser.add_argument('--num_points', type=int, default=2500, help='input batch size')
 
-
+#ㅅ샬라랄
 opt = parser.parse_args()
 print(opt)
 
