@@ -6,12 +6,11 @@ import torch
 import torch.nn.parallel
 import torch.optim as optim
 import torch.utils.data
-from pointnet.dataset import ShapeNetDataset
+from pointnet.dataset import ShapeNetDataset, FaceDataset
 from pointnet.model import PointNetDenseCls, feature_transform_regularizer
 import torch.nn.functional as F
 from tqdm import tqdm
 import numpy as np
-
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
@@ -22,8 +21,8 @@ parser.add_argument(
     '--nepoch', type=int, default=25, help='number of epochs to train for')
 parser.add_argument('--outf', type=str, default='seg', help='output folder')
 parser.add_argument('--model', type=str, default='', help='model path')
-parser.add_argument('--dataset', type=str, required=True, help="dataset path")
-parser.add_argument('--class_choice', type=str, default='Chair', help="class_choice")
+parser.add_argument('--dataset', type=str, default='../face_db', required=False, help="dataset path")
+parser.add_argument('--class_choice', type=str, default='FACE', help="class_choice")
 parser.add_argument('--feature_transform', action='store_true', help="use feature transform")
 
 opt = parser.parse_args()
@@ -34,17 +33,18 @@ print("Random Seed: ", opt.manualSeed)
 random.seed(opt.manualSeed)
 torch.manual_seed(opt.manualSeed)
 
-dataset = ShapeNetDataset(
+dataset = FaceDataset(
     root=opt.dataset,
     classification=False,
     class_choice=[opt.class_choice])
+
 dataloader = torch.utils.data.DataLoader(
     dataset,
     batch_size=opt.batchSize,
     shuffle=True,
     num_workers=int(opt.workers))
 
-test_dataset = ShapeNetDataset(
+test_dataset = FaceDataset(
     root=opt.dataset,
     classification=False,
     class_choice=[opt.class_choice],
