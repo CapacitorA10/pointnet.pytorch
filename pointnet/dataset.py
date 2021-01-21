@@ -198,7 +198,7 @@ class ModelNetDataset(data.Dataset):
 class FaceDataset(data.Dataset):
     def __init__(self,
                  root,
-                 npoints=25000,
+                 npoints=2500,
                  classification=False,
                  class_choice=None,
                  split='train',
